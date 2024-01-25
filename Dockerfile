@@ -14,4 +14,6 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 COPY --link . ./
 
+RUN chmod +x ./entrypoint.sh
+
 ENTRYPOINT ["./entrypoint.sh"]
