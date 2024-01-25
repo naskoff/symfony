@@ -1,5 +1,8 @@
 version: "3.9"
 
+networks:
+  symfony:
+
 services:
   db:
     image: mysql:8.0.32
@@ -11,10 +14,14 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE:-symfony}
       MYSQL_USER: ${MYSQL_USER:-symfony}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:-symfony}
+    networks:
+      - symfony
   php:
     image: indominus/symfony:latest
     volumes:
       - .:/app
+    networks:
+      - symfony
     depends_on:
       - db
     deploy:
@@ -29,5 +36,7 @@ services:
     volumes:
       - .:/app
       - ./nginx/templates:/etc/nginx/templates:ro
+    networks:
+      - symfony
     depends_on:
       - php
