@@ -1,0 +1,5 @@
+database/
+nginx/
+var/log
+var/cache
+vendor/
