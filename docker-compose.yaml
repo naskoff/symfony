@@ -24,8 +24,6 @@ services:
       - symfony
     depends_on:
       - db
-    deploy:
-      mode: global
   nginx:
     image: nginx:alpine
     ports:
